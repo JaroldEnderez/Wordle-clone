@@ -129,60 +129,60 @@ function App() {
   }, [currentGuess]);
 
   return (
-    <>
-<div className='bg-gray-900 h-screen w-screen flex flex-col justify-center items-center relative'>
-  {/* Trigger button */}
-  <button
-    onClick={() => setIsInstructionsOpen(true)}
-    className="absolute top-4 right-4 px-3 py-2 bg-blue-500 text-white rounded-lg"
-  >
-    Instructions
-  </button>
-
-  {/* Modal */}
-  <InstructionsModal
-    isOpen={isInstructionsOpen}
-    onClose={() => setIsInstructionsOpen(false)}
-  />
-  <h1>Wordle Clone</h1>
-  <Words className='max-h-[70vh]' results={results} currentAttempt={currentAttempt} grid={grid} randomWord={randomWord} onGameOver={()=>setIsGameOver(true)} onWin={() => setIsWinner(true)}></Words>
-        
-    <div className='mt-10'>
-    <WordleKeyboard  className='max-h-[25vh]' onKeyPress={handleKeyPress} onBackSpace={handleBackSpace} onEnter={handleEnter} randomWord={randomWord} keyStatuses={keyStatuses}/>
-    </div>
     
-    {isWinner && (
-      <div className="fixed inset-0 flex justify-center items-center bg-black/50 bg-opacity-50 z-50">
-        <div className="bg-white p-8 rounded-lg shadow-lg">
-          <p className="text-black text-2xl font-bold">You win!</p>
-          <button 
-            onClick={resetGame} 
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg"
-          >
-            Reset Game
-          </button>
+    <div className='flex flex-col w-screen bg-gray-900 min-h-screen overflow-x-hidden"'>
+      {/* Trigger button */}
+      <button
+        onClick={() => setIsInstructionsOpen(true)}
+        className="absolute mt-6 right-2 px-3 py-8 bg-blue-500 text-white rounded-lg"
+      >
+        Instructions
+      </button>
+
+      {/* Modal */}
+      <InstructionsModal
+        isOpen={isInstructionsOpen}
+        onClose={() => setIsInstructionsOpen(false)}
+      />
+      <h1 className='mt-6'>Wordle Clone</h1>
+      <Words className='max-h-[70vh]' results={results} currentAttempt={currentAttempt} grid={grid} randomWord={randomWord} onGameOver={()=>setIsGameOver(true)} onWin={() => setIsWinner(true)}></Words>
+            
+        <div className='mt-10'>
+        <WordleKeyboard  className='max-h-[25vh]' onKeyPress={handleKeyPress} onBackSpace={handleBackSpace} onEnter={handleEnter} randomWord={randomWord} keyStatuses={keyStatuses}/>
         </div>
+        
+        {isWinner && (
+          <div className="fixed inset-0 flex justify-center items-center bg-black/50 bg-opacity-50 z-50">
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <p className="text-black text-2xl font-bold">You win!</p>
+              <button 
+                onClick={resetGame} 
+                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg"
+              >
+                Reset Game
+              </button>
+            </div>
+          </div>
+        )}
+
+        {!isWinner && isGameOver && (
+          <div className="fixed inset-0 flex justify-center items-center bg-black/50 bg-opacity-50 z-50">
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <p className="text-black text-2xl font-bold">You lost!</p>
+              <p className="mt-2">Word was: {randomWord}</p>
+              <button 
+                onClick={resetGame} 
+                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg"
+              >
+                Reset Game
+              </button>
+
+            </div>
+          </div>
+        )}
+
       </div>
-    )}
-
-    {!isWinner && isGameOver && (
-      <div className="fixed inset-0 flex justify-center items-center bg-black/50 bg-opacity-50 z-50">
-        <div className="bg-white p-8 rounded-lg shadow-lg">
-          <p className="text-black text-2xl font-bold">You lost!</p>
-          <p className="mt-2">Word was: {randomWord}</p>
-          <button 
-            onClick={resetGame} 
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg"
-          >
-            Reset Game
-          </button>
-
-        </div>
-      </div>
-    )}
-
-  </div>
-    </>
+    
   )
 }
 
