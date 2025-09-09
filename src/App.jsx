@@ -126,8 +126,8 @@ function App() {
 
   return (
     <>
-      <div className='bg-gray-900 h-screen w-screen overflow-hidden relative'>
-        <Words className='max-h-[70vh]' results={results} currentAttempt={currentAttempt} grid={grid} randomWord={randomWord} onGameOver={()=>setIsGameOver(true)} onWin={() => setIsWinner(true)}></Words>
+<div className='bg-gray-900 h-screen w-screen flex flex-col justify-center items-center relative'>
+<Words className='max-h-[70vh]' results={results} currentAttempt={currentAttempt} grid={grid} randomWord={randomWord} onGameOver={()=>setIsGameOver(true)} onWin={() => setIsWinner(true)}></Words>
         
         <div className='mt-10'>
         <WordleKeyboard  className='max-h-[25vh]' onKeyPress={handleKeyPress} onBackSpace={handleBackSpace} onEnter={handleEnter} randomWord={randomWord} keyStatuses={keyStatuses}/>
