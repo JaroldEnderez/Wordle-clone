@@ -4,7 +4,7 @@ const InstructionsModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex justify-center items-center bg-black/70 z-50">
+    <div className="flex sm:fixed inset-0 flex justify-center items-center bg-black/70 z-50">
       <div className="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-md w-full relative">
         {/* Close Button */}
         <button

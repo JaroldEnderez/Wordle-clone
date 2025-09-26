@@ -130,21 +130,21 @@ function App() {
 
   return (
     
-    <div className='flex flex-col w-screen bg-gray-900 min-h-screen overflow-x-hidden"'>
-      {/* Trigger button */}
-      <button
-        onClick={() => setIsInstructionsOpen(true)}
-        className="absolute mt-6 right-2 px-3 py-8 bg-blue-500 text-white rounded-lg"
-      >
-        Instructions
-      </button>
+    <div className='flex flex-col w-screen bg-gray-900 min-h-screen overflow-x-hidden'>
 
       {/* Modal */}
       <InstructionsModal
         isOpen={isInstructionsOpen}
         onClose={() => setIsInstructionsOpen(false)}
       />
-      <h1 className='mt-6'>Wordle Clone</h1>
+      <h1 className='mt-6 text-white text-2xl'>Wordle Clone</h1>
+      {/* Instructions button: below title on mobile, fixed top-right on desktop */}
+      <button
+        onClick={() => setIsInstructionsOpen(true)}
+        className="mt-4 self-center sm:self-auto sm:absolute sm:top-6 sm:right-4 px-4 py-2 bg-blue-500 text-white rounded-lg"
+      >
+        Instructions
+      </button>
       <Words className='max-h-[70vh]' results={results} currentAttempt={currentAttempt} grid={grid} randomWord={randomWord} onGameOver={()=>setIsGameOver(true)} onWin={() => setIsWinner(true)}></Words>
             
         <div className='mt-10'>
